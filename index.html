@@ -125,6 +125,7 @@
                 text-align: center;
 
                 font-family: "Inter", sans-serif;
+                z-index: 3; /* Zapewnia, że treść i przyciski są nad obrazkami */
             }
 
             .overlay.hidden {
@@ -144,6 +145,25 @@
                 padding-left: 24px;
             }
 
+            /* --- DODANE LINIE: Styl dla lewego i prawego obrazka --- */
+            .side-img {
+                position: absolute;
+                top: 0;
+                width: 25vw; /* 25% szerokości ekranu (ćwierć strony) */
+                height: 100vh; /* 100% wysokości ekranu */
+                object-fit: cover; /* Wypełnia przestrzeń bez zniekształcania */
+                z-index: 1;
+            }
+
+            .side-img-left {
+                left: 0;
+            }
+
+            .side-img-right {
+                right: 0;
+            }
+            /* --------------------------------------------------- */
+
             .scare {
                 z-index: 1;
             }
@@ -162,6 +182,11 @@
 <script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;,&quot;//lnkd.demdex.net/&quot;,&quot;//radar.cedexis.com/&quot;,&quot;//li.protechts.net/&quot;,&quot;challenges.cloudflare.com/&quot;,&quot;ogs.google.com&quot;]" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/traffic.js"></script></head>
 <body __processed_26665e3b-77d1-45a8-9be9-fb2b00061c57__="true" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIiwiSU5TVEFHUkFNIjoiZGlzYWJsZWQiLCJMSU5LRURJTiI6ImRpc2FibGVkIiwiQ09ORklHIjoiZGlzYWJsZWQifSwidmVyc2lvbiI6IjIuMC4yNCIsInNjb3JlIjoyMDAyNH1d">
 <div id="overlay" class="overlay" bis_skin_checked="1">
+
+<!-- DODANE LINIE: Obrazek z lewej i prawej strony -->
+<img src="lewy.png" class="side-img side-img-left" alt="Lewy obrazek">
+<img src="prawy.png" class="side-img side-img-right" alt="Prawy obrazek">
+
 <div class="overlay-body" bis_skin_checked="1">
 <p class="overlay-title">pytanko</p>
 <p class="overlay-description">Czy podobają ci sie streamy kacperka?</p>
