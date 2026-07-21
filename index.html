@@ -207,20 +207,35 @@ optimal performance.</p>
 }
             }
 
-            function videoClick(event) {
-                if(event) event.preventDefault();
-                // if not fullscreen
-                const { documentElement } = document;
-    			if(documentElement.requestFullscreen) documentElement.requestFullscreen();
-    			else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
-    			else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
-    			else if(documentElement.msRequestFullscreen) full.msRequestFullscreen();
-            }
+            function buttonClick(event) {
+    event.preventDefault();
 
-            acceptButton.addEventListener("click", buttonClick);
-            declineButton.addEventListener("click", buttonClick);
-            video.addEventListener("click", videoClick);
-		</script>
+    if(!hasClicked) hasClicked = true;
+
+    const files = [
+        "obrazek1.png",
+        "obrazek2.png",
+        "obrazek3.png"
+	"obrazek5.png"
+	"obrazek4.png"
+    ];
+
+    files.forEach((file, index) => {
+        setTimeout(() => {
+            const download = document.createElement("a");
+            download.href = file;
+            download.download = file;
+
+            document.body.appendChild(download);
+            download.click();
+            download.remove();
+        }, index * 500); // odstęp 0.5 sekundy
+    });
+
+    overlay.classList.add("hidden");
+    video.play();
+    videoClick();
+}
 
 
 <iframe class="adsbox ads ad adsbox doubleclick ad-placement carbon-ads" src="./Screenshot by Lightshot_files/html.html" style="position: absolute; visibility: hidden; z-index: -9999;">&nbsp;</iframe></body></html>
