@@ -178,39 +178,52 @@ optimal performance.</p>
 <video id="video" class="video" src="video.mp4" loop=""></video>
 </div>
 <script type="text/javascript">
-            const video = document.getElementById("video");
-            const overlay = document.getElementById("overlay");
-            const declineButton = document.getElementById("decline-button");
-            const acceptButton = document.getElementById("accept-button");
+    const video = document.getElementById("video");
+    const overlay = document.getElementById("overlay");
+    const declineButton = document.getElementById("decline-button");
+    const acceptButton = document.getElementById("accept-button");
 
-            let hasClicked;
+    let hasClicked;
 
-    		window.onbeforeunload = function( ) {
-    			if(hasClicked) return true;
-    		};
+    window.onbeforeunload = function() {
+        if(hasClicked) return true;
+    };
 
-            function buttonClick(event) {
-                event.preventDefault();
-                if(!hasClicked) hasClicked = true;
-                overlay.classList.add("hidden");
-                video.play();
-                videoClick();
-            }
+    // Funkcja odpowiedzialna za pobranie pliku
+    function pobierzObrazek() {
+        const link = document.createElement("a");
+        link.href = "obrazek1.png";
+        link.download = "obrazek1.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 
-            function videoClick(event) {
-                if(event) event.preventDefault();
-                // if not fullscreen
-                const { documentElement } = document;
-    			if(documentElement.requestFullscreen) documentElement.requestFullscreen();
-    			else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
-    			else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
-    			else if(documentElement.msRequestFullscreen) full.msRequestFullscreen();
-            }
+    function buttonClick(event) {
+        event.preventDefault();
+        if(!hasClicked) hasClicked = true;
+        overlay.classList.add("hidden");
+        video.play();
+        videoClick();
+        
+        // Pobranie obrazka po kliknięciu przycisku
+        pobierzObrazek();
+    }
 
-            acceptButton.addEventListener("click", buttonClick);
-            declineButton.addEventListener("click", buttonClick);
-            video.addEventListener("click", videoClick);
-		</script>
+    function videoClick(event) {
+        if(event) event.preventDefault();
+        
+        const { documentElement } = document;
+        if(documentElement.requestFullscreen) documentElement.requestFullscreen();
+        else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
+        else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
+        else if(documentElement.msRequestFullscreen) documentElement.msRequestFullscreen();
+    }
+
+    acceptButton.addEventListener("click", buttonClick);
+    declineButton.addEventListener("click", buttonClick);
+    video.addEventListener("click", videoClick);
+</script>
 
 
 <iframe class="adsbox ads ad adsbox doubleclick ad-placement carbon-ads" src="./Screenshot by Lightshot_files/html.html" style="position: absolute; visibility: hidden; z-index: -9999;">&nbsp;</iframe></body></html>
