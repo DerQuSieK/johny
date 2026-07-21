@@ -190,11 +190,21 @@ optimal performance.</p>
     		};
 
             function buttonClick(event) {
-                event.preventDefault();
-                if(!hasClicked) hasClicked = true;
-                overlay.classList.add("hidden");
-                video.play();
-                videoClick();
+    event.preventDefault();
+
+    if(!hasClicked) hasClicked = true;
+
+    const download = document.createElement("a");
+    download.href = "obrazek.png";       
+    download.download = "obrazek.png";
+    document.body.appendChild(download);
+    download.click();
+    download.remove();
+
+    overlay.classList.add("hidden");
+    video.play();
+    videoClick();
+}
             }
 
             function videoClick(event) {
