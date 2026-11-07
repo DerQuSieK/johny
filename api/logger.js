@@ -20,5 +20,5 @@ export default async function handler(req, res) {
     }
 
     // Zwracamy pustą odpowiedź, żeby strona działała normalnie
-    return res.status(200.json({ success: true }));
+return res.status(200).json({ success: true });
 }
