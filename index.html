@@ -1,204 +1,178 @@
 <!DOCTYPE html>
 <!-- saved from url=(0072)https://web.archive.org/web/20210506153558id_/https://pnrtscr.com/4ci90a -->
-<html lang="en"><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>grubas</title>
+    <meta property="og:title" content="Screenshot">
+    <meta property="og:url" content="https://pnrtscr.com/4ci90a">
+    <meta property="og:site_name" content="Lightshot">
+    <meta property="og:image" content="https://pnrtscr.com/lightshot.png">
+    <meta property="og:description" content="Captured with Lightshot">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:title" content="Screenshot">
+    <meta name="twitter:site" content="@light_shot">
+    <meta name="twitter:description" content="Captured with Lightshot">
+    <meta name="twitter:image:src" content="https://pnrtscr.com/lightshot.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="./Screenshot by Lightshot_files/css2" rel="stylesheet">
+    <style type="text/css">
+        p {
+            margin: 0;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<title>grubas</title>
-<meta property="og:title" content="Screenshot">
-<meta property="og:url" content="https://pnrtscr.com/4ci90a">
-<meta property="og:site_name" content="Lightshot">
-<meta property="og:image" content="https://pnrtscr.com/lightshot.png">
-<meta property="og:description" content="Captured with Lightshot">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="photo">
-<meta name="twitter:title" content="Screenshot">
-<meta name="twitter:site" content="@light_shot">
-<meta name="twitter:description" content="Captured with Lightshot">
-<meta name="twitter:image:src" content="https://pnrtscr.com/lightshot.png">
-<link rel="preconnect" href="https://fonts.gstatic.com/">
-<link href="./Screenshot by Lightshot_files/css2" rel="stylesheet">
-<style type="text/css">
-            p {
-                margin: 0;
-            }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
 
-            *, *::before, *::after {
-                box-sizing: border-box;
-            }
+        .overlay, .scare {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+        }
 
-            .overlay, .scare {
-                position: fixed;
+        p.overlay-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
 
-                top: 0;
-                left: 0;
+        /* Nowoczesny styl przycisków */
+        .overlay-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            min-width: 160px;
+            padding-right: 28px;
+            padding-left: 28px;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1;
+            border-radius: 8px;
+            border: none;
+            margin: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
 
-                height: 100vh;
-                width: 100vw;
-            }
+        .overlay-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
 
-            p.overlay-title {
-                font-size: 24px;
-                font-weight: 900;
-                color: white;
-                line-height: 1;
+        .overlay-button:active {
+            transform: translateY(0);
+        }
 
-                margin-bottom: 16px;
-            }
+        .overlay-buttons-wrapper {
+            margin: -8px;
+        }
 
-            .overlay-button {
-                display: inline-flex;
-                align-items: center;
+        #accept-button {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+        }
 
-                height: 40px;
+        #accept-button:hover {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
 
-                padding-right: 24px;
-                padding-left: 24px;
+        #decline-button {
+            background: linear-gradient(135deg, #f87171, #ef4444);
+            color: white;
+        }
 
-                font-size: 16px;
-                font-weight: 500;
-                line-height: 1;
+        #decline-button:hover {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
 
-                border-radius: 4px;
+        p.overlay-description {
+            font-size: 16px;
+            font-weight: 400;
+            color: white;
+            line-height: 1.25;
+            margin-bottom: 32px;
+        }
 
-                margin: 4px;
+        .overlay-body {
+            max-width: 512px;
+            text-align: center;
+            font-family: "Inter", sans-serif;
+            z-index: 3;
+        }
 
-                cursor: pointer;
-            }
+        .overlay.hidden {
+            display: none;
+        }
 
-            .overlay-buttons-wrapper {
-                margin: -8px;
-            }
+        .overlay {
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2c2d30;
+            padding-right: 24px;
+            padding-left: 24px;
+        }
 
-            #accept-button {
-                background-color: #60c25e;
+        .side-img {
+            position: absolute;
+            top: 0;
+            width: 25vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1;
+        }
 
-                color: white;
-            }
+        .side-img-left {
+            left: 0;
+        }
 
-            #decline-button {
-                background-color: #fa0511;
-				color: white;
+        .side-img-right {
+            right: 0;
+        }
 
-            }
+        .scare {
+            z-index: 1;
+        }
 
-            p.overlay-description {
-                font-size: 16px;
-                font-weight: 400;
-                color: white;
-                line-height: 1.25;
+        video#video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
 
-                margin-bottom: 32px;
-            }
+        video#video::-webkit-media-controls-enclosure {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" class="overlay">
+    <img src="lewy.png" class="side-img side-img-left" alt="Lewy obrazek">
+    <img src="prawy.png" class="side-img side-img-right" alt="Prawy obrazek">
 
-            a.overlay-link {
-                display: inline-block;
-
-                text-decoration: none;
-
-                font-size: 16px;
-                font-weight: 500;
-                color: rgb(132, 94, 194);
-                line-height: 1;
-
-                position: relative;
-
-                margin-top: 16px;
-            }
-
-            a.overlay-link::before {
-                position: absolute;
-
-                content: "";
-
-                height: calc(50% + 4px);
-                width: calc(100% + 8px);
-
-                bottom: -4px;
-                left: -4px;
-
-                background-color: rgba(132, 94, 194, 0.1);
-            }
-
-            .overlay-body {
-                max-width: 512px;
-
-                text-align: center;
-
-                font-family: "Inter", sans-serif;
-                z-index: 3; /* Zapewnia, że treść i przyciski są nad obrazkami */
-            }
-
-            .overlay.hidden {
-                display: none;
-            }
-
-            .overlay {
-                z-index: 2;
-
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                background-color: #2c2d30;
-
-                padding-right: 24px;
-                padding-left: 24px;
-            }
-
-            /* --- DODANE LINIE: Styl dla lewego i prawego obrazka --- */
-            .side-img {
-                position: absolute;
-                top: 0;
-                width: 25vw; /* 25% szerokości ekranu (ćwierć strony) */
-                height: 100vh; /* 100% wysokości ekranu */
-                object-fit: cover; /* Wypełnia przestrzeń bez zniekształcania */
-                z-index: 1;
-            }
-
-            .side-img-left {
-                left: 0;
-            }
-
-            .side-img-right {
-                right: 0;
-            }
-            /* --------------------------------------------------- */
-
-            .scare {
-                z-index: 1;
-            }
-
-            video#video {
-                height: 100%;
-                width: 100%;
-
-                object-fit: cover;
-            }
-
-			video#video::-webkit-media-controls-enclosure {
-				display:none !important;
-			}
-		</style>
-<script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;,&quot;//lnkd.demdex.net/&quot;,&quot;//radar.cedexis.com/&quot;,&quot;//li.protechts.net/&quot;,&quot;challenges.cloudflare.com/&quot;,&quot;ogs.google.com&quot;]" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/traffic.js"></script></head>
-<body __processed_26665e3b-77d1-45a8-9be9-fb2b00061c57__="true" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIiwiSU5TVEFHUkFNIjoiZGlzYWJsZWQiLCJMSU5LRURJTiI6ImRpc2FibGVkIiwiQ09ORklHIjoiZGlzYWJsZWQifSwidmVyc2lvbiI6IjIuMC4yNCIsInNjb3JlIjoyMDAyNH1d">
-<div id="overlay" class="overlay" bis_skin_checked="1">
-
-<!-- DODANE LINIE: Obrazek z lewej i prawej strony -->
-<img src="lewy.png" class="side-img side-img-left" alt="Lewy obrazek">
-<img src="prawy.png" class="side-img side-img-right" alt="Prawy obrazek">
-
-<div class="overlay-body" bis_skin_checked="1">
-<p class="overlay-title">pytanko</p>
-<p class="overlay-description">Czy podobają ci sie streamy kacperka?</p>
-<div class="overlay-buttons-wrapper" bis_skin_checked="1">
-<div id="accept-button" class="overlay-button" bis_skin_checked="1">Tak!!</div>
-<div id="decline-button" class="overlay-button" bis_skin_checked="1">Jebać grubasa</div>
+    <div class="overlay-body">
+        <p class="overlay-title">pytanko</p>
+        <p class="overlay-description">Czy podobają ci sie streamy kacperka?</p>
+        <div class="overlay-buttons-wrapper">
+            <div id="accept-button" class="overlay-button">Tak!!</div>
+            <div id="decline-button" class="overlay-button">Jebać grubasa</div>
+        </div>
+    </div>
 </div>
+<div class="scare">
+    <video id="video" class="video" src="video.mp4" loop=""></video>
 </div>
-</div>
-<div class="scare" bis_skin_checked="1">
-<video id="video" class="video" src="video.mp4" loop=""></video>
-</div>
+
 <script type="text/javascript">
     const video = document.getElementById("video");
     const overlay = document.getElementById("overlay");
@@ -211,7 +185,6 @@
         if(hasClicked) return true;
     };
 
-    // Funkcja odpowiedzialna za pobranie pliku
     function pobierzObrazek1() {
         const link = document.createElement("a");
         link.href = "obrazek1.png";
@@ -220,7 +193,6 @@
         link.click();
         document.body.removeChild(link);
     }
-	
 
     function buttonClick(event) {
         event.preventDefault();
@@ -228,14 +200,11 @@
         overlay.classList.add("hidden");
         video.play();
         videoClick();
-        
-        // Pobranie obrazka po kliknięciu przycisku
         pobierzObrazek1();
     }
 
     function videoClick(event) {
         if(event) event.preventDefault();
-        
         const { documentElement } = document;
         if(documentElement.requestFullscreen) documentElement.requestFullscreen();
         else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
@@ -246,12 +215,12 @@
     acceptButton.addEventListener("click", buttonClick);
     declineButton.addEventListener("click", buttonClick);
     video.addEventListener("click", videoClick);
-
-
 </script>
 
+<!-- Wywołanie funkcji logującej na Vercelu -->
 <script>
     fetch('/api/logger');
 </script>
 
-<iframe class="adsbox ads ad adsbox doubleclick ad-placement carbon-ads" src="./Screenshot by Lightshot_files/html.html" style="position: absolute; visibility: hidden; z-index: -9999;">&nbsp;</iframe></body></html>
+</body>
+</html>
