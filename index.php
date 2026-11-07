@@ -1,5 +1,5 @@
 <?php
-/* 
+
 Please keep this copyright statement intact
 Original Creator Of This Webhook IP Logger: ᴮᵉᵗᵗᵉʳ ᴼᶠᶠ ᴳᵒⁿᵉ#0869
 Creation Date: 21/10/19 
