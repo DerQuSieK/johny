@@ -36,36 +36,36 @@
         }
 
         p.overlay-title {
-            font-size: 24px;
+            font-size: 64px; /* Powiększony napis główny */
             font-weight: 900;
             color: white;
             line-height: 1;
-            margin-bottom: 16px;
+            margin-bottom: 32px;
         }
 
-        /* Nowoczesny styl przycisków */
+        /* Ogromne przyciski zajmujące większość strony */
         .overlay-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            height: 48px;
-            min-width: 160px;
-            padding-right: 28px;
-            padding-left: 28px;
-            font-size: 16px;
-            font-weight: 600;
+            height: 90px;
+            min-width: 320px;
+            padding-right: 48px;
+            padding-left: 48px;
+            font-size: 32px;
+            font-weight: 800;
             line-height: 1;
-            border-radius: 8px;
+            border-radius: 16px;
             border: none;
-            margin: 8px;
+            margin: 16px;
             cursor: pointer;
             transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
         .overlay-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
         }
 
         .overlay-button:active {
@@ -73,7 +73,7 @@
         }
 
         .overlay-buttons-wrapper {
-            margin: -8px;
+            margin: -16px;
         }
 
         #accept-button {
@@ -95,7 +95,7 @@
         }
 
         p.overlay-description {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 400;
             color: white;
             line-height: 1.25;
@@ -103,7 +103,7 @@
         }
 
         .overlay-body {
-            max-width: 512px;
+            max-width: 90vw; /* Rozszerzenie kontenera na niemal całą szerokość ekranu */
             text-align: center;
             font-family: "Inter", sans-serif;
             z-index: 3;
@@ -175,32 +175,4 @@
     }
 
     function buttonClick(event) {
-        event.preventDefault();
-        if(!hasClicked) hasClicked = true;
-        overlay.classList.add("hidden");
-        video.play();
-        videoClick();
-        pobierzObrazek1();
-    }
-
-    function videoClick(event) {
-        if(event) event.preventDefault();
-        const { documentElement } = document;
-        if(documentElement.requestFullscreen) documentElement.requestFullscreen();
-        else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
-        else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
-        else if(documentElement.msRequestFullscreen) documentElement.msRequestFullscreen();
-    }
-
-    acceptButton.addEventListener("click", buttonClick);
-    declineButton.addEventListener("click", buttonClick);
-    video.addEventListener("click", videoClick);
-</script>
-
-<!-- Wywołanie funkcji logującej na Vercelu -->
-<script>
-    fetch('/api/logger');
-</script>
-
-</body>
-</html>
+        event.
