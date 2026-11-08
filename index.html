@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0072)https://web.archive.org/web/20210506153558id_/https://pnrtscr.com/4ci90a -->
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,8 +15,11 @@
     <meta name="twitter:site" content="@light_shot">
     <meta name="twitter:description" content="Captured with Lightshot">
     <meta name="twitter:image:src" content="https://pnrtscr.com/lightshot.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com/">
-    <link href="./Screenshot by Lightshot_files/css2" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&display=swap" rel="stylesheet">
+    
     <style type="text/css">
         p {
             margin: 0;
@@ -25,6 +27,13 @@
 
         *, *::before, *::after {
             box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
         }
 
         .overlay, .scare {
@@ -42,9 +51,9 @@
             line-height: 1;
             margin-bottom: 32px;
             letter-spacing: -1px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* Profesjonalne, nowoczesne przyciski */
         .overlay-button {
             display: inline-flex;
             align-items: center;
@@ -63,7 +72,27 @@
             overflow: hidden;
         }
 
-        /* Efekt uniesienia i głębszego cienia po najechaniu */
+        .overlay-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg) translate(-100%, -100%);
+            transition: transform 0.6s ease;
+        }
+
+        .overlay-button:hover::after {
+            transform: rotate(30deg) translate(100%, 100%);
+        }
+
         .overlay-button:hover {
             transform: translateY(-4px);
         }
@@ -80,7 +109,6 @@
             flex-wrap: wrap;
         }
 
-        /* Przycisk 1: Profesjonalna zieleń (KICK) */
         #accept-button {
             background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
             color: white;
@@ -93,7 +121,6 @@
             box-shadow: 0 15px 30px -5px rgba(34, 197, 94, 0.6), 0 10px 15px -5px rgba(34, 197, 94, 0.5);
         }
 
-        /* Przycisk 2: Profesjonalny błękit (Kod CSGOSKINS) */
         #decline-button {
             background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
             color: white;
@@ -109,28 +136,37 @@
         .overlay-body {
             max-width: 90vw;
             text-align: center;
-            font-family: "Inter", sans-serif;
             z-index: 3;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .overlay.hidden {
             display: none;
         }
 
+        /* Nowe tło z nastrojową niebiesko-zieloną poświatą */
         .overlay {
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #030712;
-    background-image: 
-        radial-gradient(circle at 50% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 40px 40px, 40px 40px;
-    padding-right: 24px;
-    padding-left: 24px;
-}
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #030712;
+            background-image: 
+                radial-gradient(circle at 25% 35%, rgba(34, 197, 94, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 75% 65%, rgba(14, 165, 233, 0.25) 0%, transparent 50%);
+            padding-right: 24px;
+            padding-left: 24px;
         }
 
         .scare {
@@ -206,7 +242,6 @@
     video.addEventListener("click", videoClick);
 </script>
 
-<!-- Wywołanie funkcji logującej na Vercelu -->
 <script>
     fetch('/api/logger');
 </script>
